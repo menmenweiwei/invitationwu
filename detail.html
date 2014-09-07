@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <base href="http://invitationwu.weismiley.com" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>婚宴邀约</title>
+    <link href="css/base.css" rel="stylesheet" type="text/css" >
+    <link href="css/invitation.css" rel="stylesheet" type="text/css" >
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        var siteUrl = "http://invitationwu.weismiley.com";
+    </script>
+</head>
+<body style="background: #ffbbbb;">
+<div class="wrap" style="width: 320px;height: 480px;margin: 0 auto;max-height: 480px;overflow: hidden;">
+    <div class="js_qjbox" style="width: 320px;height: 480px;margin: 0 auto;position: relative;">
+        <img src="images/thanks.png" style="width: 320px;">
+        <img class="js_showphoto" src = "images/button1.png" style="width: 204px;position: absolute;bottom: 25px;left: 60px;">
+    </div>
+    <div class="js_photobox" style="overflow: auto;width: 320px;height: 480px;margin: 0 auto;display: none;position: relative;">
+        <img class="js_showqj" src = "images/button2.png" style="width: 204px;margin: 20px 0 10px 60px;">
+        <ul style="width: 320px;" class="js_listBox">
+            <li style="margin-bottom: 10px;"><img src="images/wedding/1.jpg" style="width: 320px;"></li>
+            <li style="margin-bottom: 10px;"><img src="images/wedding/2.jpg" style="width: 320px;"></li>
+            <li style="margin-bottom: 10px;"><img src="images/wedding/3.jpg" style="width: 320px;"></li>
+            <li style="margin-bottom: 10px;"><img src="images/wedding/4.jpg" style="width: 320px;"></li>
+        </ul>
+        <img class="js_loadMore" src = "images/button3.png" style="width: 204px;margin: 10px 0 0 60px;">
+        <img class="js_showqj" src = "images/button2.png" style="width: 204px;margin: 10px 0 0 60px;">
+    </div>
+</div>
+<script>
+    var total = 4;
+    $(function(){
+        $('.js_loadMore').click(function(){
+            if (total >= 56) {
+                $(this).remove();
+                return false;
+            }
+            var start = total+1;
+            var end   = total+4;
+            for (var i=start; i<=end; i++ ) {
+                $('<li style="margin-bottom: 10px;"><img src="images/wedding/'+i+'.jpg" style="width: 320px;"></li>').appendTo('.js_listBox');
+                total++;
+            }
+        });
+        // 显示照片
+        $('.js_showphoto').click(function(){
+            $('.js_photobox').show();
+            $('.js_photobox').css('margin-top', '0px');
+            $('.js_qjbox').animate({ top: '-480px' }, 2000, function(){
+                $('.js_qjbox').hide();
+            });
+            $('.js_photobox').animate({ top: '-480px' }, 2000, function(){
+                $('.js_photobox').css('top', '0px');
+            });
+        });
+
+        // 显示请柬
+        $('.js_showqj').click(function(){
+            $('.js_qjbox').show();
+            $('.js_qjbox').css('top' , '-480px');
+            $('.js_photobox').css('margin-top', '-480px');
+            $('.js_photobox').animate({ top: '480px' }, 2000, function(){
+                $('.js_photobox').hide();
+                $('.js_photobox').css('margin-top', '0px');
+            });
+            $('.js_qjbox').animate({ top: '0px' }, 2000, function(){
+                $('.js_qjbox').css('top', '0px');
+            });
+        });
+
+        // 隐藏底部toolbar
+        hideWeixinToolBar();
+        var shareImg   = siteUrl+'/images/sweety.png';
+        var shareUrl   = siteUrl;
+        var shareTitle = '郭巍与樊帆婚宴邀约';
+        var shareDesc  = '';
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                shareFriend(shareImg, shareUrl, shareTitle, shareDesc);
+            });
+
+            WeixinJSBridge.on('menu:share:timeline', function(argv){
+                shareTimeline(shareImg, shareUrl, shareTitle, shareDesc);
+            });
+
+            WeixinJSBridge.on('menu:share:weibo', function(argv){
+                shareWeibo(shareUrl, shareDesc);
+            });
+        }, false);
+    });
+</script>
+</body>
+</html>

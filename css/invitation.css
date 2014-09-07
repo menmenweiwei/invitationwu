@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{ font-family:'Microsoft Yahei', Arial, Helvetica, sans-serif; font-size:62.5%; color:#fff; background:#d24746;}
+input,button{ font-family:'Microsoft Yahei', Arial, Helvetica, sans-serif;}
+.wrap{ width:320px; height:auto; margin:0 auto;}
+.bg1{ width:100%; height:auto; position:relative;}
+.bg1 img{ width:100%; height:auto;}
+.bg1 img.bg1-tip{ width:135px; height:auto; position:absolute; right:16px; top:20px;}
+.bg1 img.last2{ width:140px; height:auto; position:absolute; right:16px; top:10px;}
+.bg1 img.last1{ width:140px; height:auto; position:absolute; right:16px; top:10px;}
+.bg1 img.last-none{ width:167px; height:auto; position:absolute; right:16px; top:20px;}
+.card{ width:100%; height:227px; overflow:hidden; position:relative;}
+.card img{ width:100%; height:auto;}
+.card-bg{ position:absolute; left:0px; top:0px;}
+.prize1{ position:absolute; left:0px; top:0px; width:100%; height:100%;}
+.prize1-title{ background:url(../images/m/lenovo/cards/prize1-title.png) no-repeat; background-size:100% 100%; width:135px; height:31px; position:absolute; top:19px; right:16px;}
+.prize1-img{ background:url(../images/m/lenovo/cards/prize1-img.png) no-repeat; background-size:100% 100%; width:150px; height:117px; position:absolute; right:10px; bottom:9px;}
+.prize1-btn-edit{ background:url(../images/m/lenovo/cards/btn1.png) no-repeat; background-size:100% 100%; width:55px; height:57px; text-indent:-999px; overflow:hidden; position:absolute; left:155px; top:97px;}
+.prize-none,.prize2{ position:absolute; left:0px; top:0px; width:100%; height:100%;}
+.prize-none .prize1-title{ background-image:url(../images/m/lenovo/cards/prize-none-title.png);}
+.prize-none-img{ background:url(../images/m/lenovo/cards/prize-none-img.png) no-repeat; background-size:100% 100%; width:150px; height:47px; position:absolute; right:10px; bottom:58px;}
+.prize2 .prize1-title{ background-image:url(../images/m/lenovo/cards/prize2-title.png);}
+.prize2-num{ width:110px; height:auto; text-align:center; font-size:2.4em; letter-spacing:3px; word-break:break-all; position:absolute; top:115px; right:26px;}
+.prize2-info{ widows:149px; height:auto; position:absolute; right:10px; bottom:5px;}
+.prize2-info p{ font-size:1.2em; line-height:18px;}
+.prize2-info p a{ display:inline-block; font-size:1.2em; line-height:18px; color:#d24746; text-decoration:underline;}
+.bg2{ width:100%; height:164px; background:url(../images/m/lenovo/cards/bg2.png) no-repeat; background-size:100% 100%; position:relative;}
+.bg2-title{ background:url(../images/m/lenovo/cards/title-bg1.png) no-repeat; background-size:100% 100%; width:244px; height:56px; margin:0 auto 10px;}
+.bg2-title h3{ width:182px; height:28px; line-height:28px; text-align:center; font-size:1.6em;}
+.bg2-title h4{ width:195px; height:28px; line-height:28px; text-align:center; font-size:1.6em; margin-left:48px;}
+.bg2-list{ height:auto; text-align:center;}
+.bg2-list li{ display:inline-block; color:#000; font-size:1.4em;}
+.bg2-list li.icon-and{ width:35px; height:35px; line-height:35px; font-size:2.4em; color:#fff; text-align:center; border-radius:35px; background:#d24746; vertical-align:top; margin:30px 20px 0;}
+.bg2-list li:last-child img{ margin-bottom:10px; position:relative; top:10px;}
+.txt1{ height:auto; padding:20px 0; text-align:center; background:url(../images/m/lenovo/cards/bg3.png) repeat; position:relative;}
+.txt1-arrow{ width:35px; height:11px; background:url(../images/m/lenovo/cards/arrow1.png) center 0 no-repeat; position:absolute; left:50%; margin-left:-18px;}
+.txt1-arrow.arrow1{ top:-10px;}
+.txt1-arrow.arrow2{ bottom:-10px; margin-left:-14px; -webkit-transform:rotate(180deg);}
+.shares{ padding:22px 14px 30px; height:auto;}
+.shares button{ display:block; float:left; width:49%; padding:8px 0; font-family:'Microsoft Yahei'; line-height:22px; font-size:1.4em; 
+  background:-webkit-linear-gradient(to top, #f5f5f5, #ffffff); 
+  background:-moz-linear-gradient(to top, #f5f5f5, #ffffff); 
+  background:-o-linear-gradient(to top, #f5f5f5, #ffffff); 
+  background:linear-gradient(to top, #f5f5f5, #ffffff); border:1px solid #D3D3D3; box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.15); text-shadow:0.5px 0.5px 1px #fff; border-radius:3px; cursor:pointer;}
+.shares button:last-child{ float:right;}
+.shares button img{ width:22px; height:22px; vertical-align:top;}
+.prize{ height:auto; padding:0 30px 30px;}
+.prize-title{ width:107px; height:auto; padding:8px 14px; border:1px dashed #e9a3a3; border-radius:10px; margin:0 auto 10px;}
+.prize-history-none{ font-size:1.6em; text-align:center; padding:50px 0;}
+.prize-history{ width:100%; height:auto;}
+.prize-history td{ padding:5px 10px; text-align:left; font-size:1.2em; line-height:20px; border-bottom:1px solid #fff;}
+.prize-history td:first-child{ padding-left:0px;}
+.prize-history td:last-child{ padding-right:0px;}
+.prize-history tr:last-child td{ border:none;}
+.btn-edit{ color:#fff;}
+
+/*prize1 弹层*/
+.float{ position:fixed; left:0px; top:0px; z-index:100; width:100%; height:100%; background:rgba(0,0,0,0.7);}
+.float-prize1{ background:url(../images/m/lenovo/cards/bg5.png) no-repeat; background-size:100% 100%; width:276px; height:153px; border:1px solid #fff; border-radius:5px; position:absolute; left:50%; top:50%; margin:-73px 0 0 -138px;}
+.float-prize1 form{ padding:5px 13px 0; height:auto;}
+.float-prize1 h4{ font-size:1.5em; line-height:24px; text-align:center;}
+.float-prize1 p{ font-size:1.2em; line-height:20px; text-align:center;}
+.float-prize1-ipt{ display:block; height:39px; background:url(../images/m/lenovo/cards/bg4.png) repeat; border-radius:5px; margin:5px 0 7px; box-shadow:3px 3px 3px rgba(0,0,0,0.3) inset;}
+.float-prize2-ipt{ background:#fff;}
+.float-prize1-ipt input{ width:100%; height:21px; line-height:21px; font-size:1.5em; color:#333; padding:9px 0; text-indent:5px; background:none; border:none;}
+.float-prize1-btn{ display:block; width:63px; height:25px; font-size:1.5em; color:#e60012; background:#fff; border:none; border-radius:5px; margin:0 auto;}
+
+/*分享弹层*/
+.float-share{ position:absolute; left:0px; top:0px; width:100%; height:100%;}
+.float-share-arrow{ background:url(../images/m/lenovo/cards/arrow2.png) no-repeat; background-size:100% auto; width:47px; height:53px; position:absolute; top:16px; right:72px;}
+.float-share-title{ width:60px; height:30px; text-align:center; font-size:1.2em; line-height:15px; position:absolute; top:29px; right:123px;}
+.float-share-con{ width:197px; height:163px; position:absolute; left:50%; top:100px; margin-left:-99px;}
+.float-share-none{ background:url(../images/m/lenovo/cards/txt3-share1.png) no-repeat; background-size:100% auto;}
+.float-share-prize1{ background:url(../images/m/lenovo/cards/txt3-share2.png) no-repeat; background-size:100% auto;}
+.float-share-prize2{ background:url(../images/m/lenovo/cards/txt3-share3.png) no-repeat; background-size:100% auto;}
+
+
+

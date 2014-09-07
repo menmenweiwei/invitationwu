@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{ font-size:62.5%; font-family:'Microsoft Yahei';}
+.wrap{ min-width:320px; width:100%;}
+.game-header{ background:#333335; padding:10px 17px;}
+.game-time{ height:;}
+.game-range{ width:95px; height:8px; border:1px solid #fff; border-radius:2px; overflow:hidden; margin:0 5px; position:relative; top:5px;}
+.game-range span{ display:block; height:8px; background:#fff;}
+.game-num{ line-height:20px; color:#fff; font-size:1.2em;}
+.game-score{ color:#fff; font-size:1.5em; line-height:20px;}
+.game-score span{ color:#a0a0a0; font-size:0.8em;}
+.game-con{ width:100%; min-height:500px; height:auto; background:url(../images/m/lenovo/bg-game.jpg) no-repeat; background-size:100% 100%; position:relative;}
+
+.float{ width:100%; height:100%; background:rgba(0,0,0,0.7); position:fixed; z-index:100; left:0; top:0;}
+.float p.loading{ font-size:1.4em; color:#fff; text-align:center; height:20px; line-height:20px; position:absolute; left:50%; top:50%; margin-top:-10px;margin-left:-10px;}
+/*game over 弹层*/
+.game-over{ width:216px; height:auto; position:absolute; left:50%; top:59px; margin-left:-92px;}
+.game-over-bg{ width:207px; height:170px; background:url(../images/m/lenovo/game-over.png) center top no-repeat; background-size:207px 145px;}
+.game-over-score{ color:#fff; padding:40px 30px 0 0; background:url(../images/m/lenovo/game-over2.png) no-repeat; background-size:190px 31px;}
+.game-over-score p:nth-child(1){ font-size:1.5em; height:24px; line-height:24px;}
+.game-over-score p:nth-child(1) span{ color:#a0a0a0; font-size:0.8em;}
+.game-over-tip{ font-size:1.5em; line-height:24px; margin-bottom:10px;}
+.game-again{ display:block; background:url(../images/m/lenovo/btns4.png) no-repeat; width:183px; height:35px; background-size:100% 100%; text-indent:-999px; overflow:hidden;}
+.game-draw{ width:186px; height:35px; background:url(../images/m/lenovo/btns5.png) no-repeat; background-size:100% 100%;}
+.game-draw a{ display:block; height:35px; text-indent:-999px; overflow:hidden;}
+.game-draw a.draw{ width:78px;}
+.game-draw a.again{ width:102px;}
+
+.nobg{ background:none;}

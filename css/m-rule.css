@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{ font-size:62.5%; font-family:'Microsoft Yahei'; background:url(../images/m/lenovo/bg-rule.jpg) center top no-repeat; background-size:100% 100%;}
+.wrap{ min-width:320px; width:100%;}
+.header{ padding:20px 15px; height:auto;}
+.header .logo{ width:112px; height:35px; background:url(../images/m/lenovo/images/logo.png) no-repeat; background-size:112px 35px;}
+.rule-tab{ font-size:1.2em; color:#efefef; padding-top:25px;}
+.rule-tab a{ color:#aaa;}
+.rule-tab a.curr{ color:#fff;}
+.rule{ width:289px; height:auto; margin:0 auto 20px;}
+.rule-bg{ height:auto;}
+.float-win-title{ background:url(../images/m/lenovo/rule-bg.jpg) center -10px no-repeat; width:289px; height:85px; background-size:289px 315px; border-top:1px solid #548ba6; border-bottom:1px solid #548ba6; border-radius:2px 2px 0 0; overflow:hidden;}
+.rule-box{ background:url(../images/m/lenovo/mayer1.png) repeat; width:287px; height:auto; padding:10px 0 0; border:1px solid #548ba6; border-top:none; border-radius:0 0 2px 2px; padding-bottom:15px;}
+.rule-title{ width:265px; height:29px; font-size:1.8em; color:#fff; padding:10px 12px 0; text-shadow:1px 2px 5px rgba(0,0,0,0.7);}
+.rule-txt{ width:265px; line-height:25px; padding:0 5px; font-size:1.2em; color:#fff; word-wrap:break-word; background:url(../images/m/lenovo/line1.png) 0 0 repeat; background-size:1px 25px; margin:0 auto 14px; text-shadow:1px 2px 5px rgba(0,0,0,0.7);}
+.rule-go-btn{ display:block; width:183px; height:35px; text-indent:-999px; background:url(../images/m/lenovo/btns8.jpg) no-repeat; background-size:100% 100%; overflow:hidden; margin:0 auto;}
+/*获奖记录*/
+.history-bg{ height:314px; background:url(../images/m/lenovo/rule-bg2.jpg) no-repeat; background-size:289px 432px;padding-top:108px;}
+.rule-history{ width:265px; height:198px; color:#fff; margin:0 auto 19px;}
+.rule-history th{ height:25px; line-height:25px; font-weight:bold; font-size:1.4em; padding:3px 0 2px; border-bottom:1px solid #548ba6;}
+.rule-history td{ height:20px; line-height:20px; font-size:1.2em; padding:4px 0 3px; border-bottom:1px solid #548ba6;}
+.rule-history tfoot td{ width:100%; text-align:right; color:#efefef; border-bottom:none;}
+.rule-history tfoot td a{ color:#efefef;}
+.rule-history tfoot td a.curr,.rule-history tfoot td a:hover,.rule-history tfoot td a:active{ color:#fff;}

@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <base href="http://invitationwu.weismiley.com" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>婚宴邀约</title>
+    <link href="css/base.css" rel="stylesheet" type="text/css" >
+    <link href="css/m-rule.css" rel="stylesheet" type="text/css" >
+    <link href="css/m-game.css" rel="stylesheet" type="text/css" >
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        var siteUrl = "http://invitationwu.weismiley.com";
+        $(function(){
+//   for ( i = 1; i < 28; i++)
+//   {
+//      common.loadImage("http://lenovocq.alltosun.net/images/ballot/" + "ballot" + i +".png")
+//   }
+            hideWeixinToolBar();
+            var shareImg   = siteUrl+'/images/sweety.png';
+            var shareUrl   = siteUrl;
+            var shareTitle = '郭巍与樊帆婚宴邀约';
+            var shareDesc  = '';
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                    shareFriend(shareImg, shareUrl, shareTitle, shareDesc);
+                });
+
+                WeixinJSBridge.on('menu:share:timeline', function(argv){
+                    shareTimeline(shareImg, shareUrl, shareTitle, shareDesc);
+                });
+
+                WeixinJSBridge.on('menu:share:weibo', function(argv){
+                    shareWeibo(shareUrl, shareDesc);
+                });
+            }, false);
+        });
+    </script>
+</head>
+<body style="background:#ffbbbb;">
+<div class="wrap" style="min-height:514px;">
+    <div style="position: absolute;height: 356px;padding:0;text-align:center;" class="js_cover">
+        <img src="images/sweety.png" style="height: 320px;margin:0 auto;display:block;">
+        <a href="http://invitationwu.weismiley.com/detail.html" style="z-index:10;display: block;width: 204px;height: 67px;position: relative;margin: auto;">
+            <img src="images/button.png" style="margin:3 auto;display:block;z-index:10;width: 204px;left: 0;position: absolute;">
+        </a>
+    </div>
+    <div class="game-con" style="position: static;">
+        <div class="game-box"></div>
+    </div>
+    <!--start:loading弹层-->
+    <div class="float js_loading" style="background: #fff;">
+        <p class="loading1" style="width:226px;height:181px;padding:0;margin: 100px auto;"><img src="images/loading.gif" style="width: 226px;"></p>
+    </div>
+    <!--end:loading弹层-->
+</div>
+<script>
+    document.body.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+    }, false);
+    var allowScore = 60;
+    allowScore = 1;
+    var takeCoinId = "1";
+    var isPost = false;
+    setTimeout(function(){
+        var windowWidth = $(window).width();
+        var windowHeight = $(window).height() -41;
+        var coverWidth = $('.js_cover').width();
+        var coverHeight = $('.js_cover').height();
+        var topOffset  = windowHeight > coverHeight ? (windowHeight - coverHeight) / 2 : 0;
+        var leftOffset = windowWidth  > coverWidth  ? (windowWidth  - coverWidth)  / 2 : 0;
+        console.log(coverWidth,coverHeight,windowWidth,windowHeight)
+        $('.js_cover').css({ 'top' : topOffset, 'left' : leftOffset });
+        $('.game-box').append('<canvas id="canvas" width="'+windowWidth+'" height="'+windowHeight+'"></canvas>');
+        $(function(){
+            // 金币对像
+            var fire1 = new Image();
+            fire1.src = siteUrl+"/images/heart-1.png";
+            fire1.value = 0;
+            fire1.speed = 1.4;
+            var fire2 = new Image();
+            fire2.src = siteUrl+"/images/heart-2.png";
+            fire2.value = 0;
+            fire2.speed = 1.8;
+            var fire3 = new Image();
+            fire3.src = siteUrl+"/images/heart-3.png";
+            fire3.value = 0;
+            fire3.speed = 3.2;
+            var fire4 = new Image();
+            fire4.src = siteUrl+"/images/heart-4.png";
+            fire4.value = 0;
+            fire4.speed = 4.2;
+            var fire5 = new Image();
+            fire5.src = siteUrl+"/images/heart-5.png";
+            fire5.value = 5;
+            fire5.speed = 1.6;
+            var fire6 = new Image();
+            fire6.src = siteUrl+"/images/heart-6.png";
+            fire6.value = 10;
+            fire6.speed = 2;
+
+            function start() {
+                // 金币类;
+                function Money(x,y,speed,img){
+                    // 没次循环增加的像素数
+                    this.speed = speed;
+                    this.x = x;
+                    this.y = y;
+                    this.width = img.width;
+                    this.height = img.height;
+                    this.img = img;
+                    this.value = img.value;
+                }
+                Money.prototype = {
+                    draw:function(ctx){
+                        ctx.drawImage(this.img,this.x,this.y,this.width, this.height);
+                    },
+                    move:function(){
+                        this.y += this.speed;
+                    }
+                }
+                // 娃娃脸
+                var App = {
+                    // 对象
+                    elements:[],
+                    imgs:[fire1,fire2,fire3,fire4,fire5,fire6],
+                    // 画布
+                    canvas:null,
+                    // 绘制工具
+                    context:null,
+                    // 定时器
+                    timer:null,
+                    // 速度（更新间隔speed * 10）
+                    speed:0,
+                    pause:false,
+                    // 绘制对象
+                    draw:function(){
+                        // 清屏
+                        this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
+                        this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
+
+                        // 绘制金币
+                        for(var i=0;i<this.elements.length;i++){
+                            var o = this.elements[i];
+                            // 清理屏幕外的对象
+                            if(o.x > this.canvas.width || o.x < 0 || o.y > this.canvas.height || o.y < 0){
+                                this.elements.splice(i,1);
+                            }else{
+                                o.draw(this.context);
+                            }
+                        }
+                    },
+                    // 循环处理
+                    loop:function(){
+                        var me = App;
+                        if(me.pause){
+                            return;
+                        }
+                        for(var i=0;i<me.elements.length;i++){
+                            me.elements[i].move();
+                        }
+                        var chance = Math.random() * 1000;
+                        // 1/10的对象添加概率
+                        if(chance < 35){
+                            var img = me.imgs[parseInt(chance%me.imgs.length)];
+                            var x = Math.random()*(me.canvas.width - me.imgs[parseInt(chance%me.imgs.length)].width);
+                            var y = 0;
+                            var speed = img.speed;
+                            var money = new Money(x,y,speed,img);
+                            me.addElement(money);
+                        }
+                        me.draw();
+                    },
+                    // 开始游戏
+                    gameStart:function(id,speed){
+                        var me = this;
+                        me.canvas = document.getElementById(id);
+                        me.context = me.canvas.getContext("2d");
+                        me.speed = speed;
+                        if(this.timer != null) me.gameOver();
+                        me.timer = setInterval(me.loop,me.speed * 10);
+                    },
+                    // 添加对象
+                    addElement:function(o){
+                        this.elements.push(o);
+                    }
+                }
+
+                function startGame(){
+                    var can = document.getElementById("canvas");
+                    var ctx = can.getContext("2d");
+                }
+                startGame();
+                if(App.timer == null){
+                    App.gameStart("canvas", 2);
+                }
+            }
+
+            $('.js_loading').hide();
+            start();
+        });
+    }, 2500);
+</script>
+</body>
+</html>
